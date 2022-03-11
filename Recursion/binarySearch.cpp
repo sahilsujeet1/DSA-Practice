@@ -25,6 +25,19 @@ bool binarySearch(int arr[], int s, int e, int k) {
         return binarySearch(arr, s, mid-1, k);
 }
 
+int indexBinarySearch(int arr[], int s, int e, int k) {
+    if(s>e)
+        return -1;
+    
+    int mid = s + (e-s)/2;
+
+    if(arr[mid] == k)
+        return mid;
+    else if(arr[mid] < k)
+        return indexBinarySearch(arr, mid+1, e, k);
+    else
+        return indexBinarySearch(arr, s, mid-1, k);
+}
 
 int main() {
     int arr[] = {5,7,9,12,39,56,60,69,75,81,99,102};
@@ -33,4 +46,5 @@ int main() {
     cin >> k;
 
     cout << "Element found: " << binarySearch(arr, 0, n-1, k) << endl;
+    cout << "Element found at index: " << indexBinarySearch(arr, 0, n-1, k) << endl;
 }
