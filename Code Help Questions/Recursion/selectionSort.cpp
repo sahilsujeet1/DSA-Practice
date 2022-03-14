@@ -1,25 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void bulbullaSort(int arr[], int n)
-{
-    if (n == 0 || n == 1)
+void selectionSort(int arr[], int s, int n) {
+    if(s > n)
         return;
 
-    for (int i = 0; i < n - 1; i++)
-    {
-        if (arr[i] > arr[i + 1])
-            swap(arr[i], arr[i + 1]);
+    int min = s;
+    for(int i=s+1; i<n; i++) {
+        if(arr[i] < arr[min])
+            min = i;
     }
+    swap(arr[min], arr[s]);
 
-    bulbullaSort(arr, n - 1);
+    selectionSort(arr, s+1, n);
+
 }
 
 int main()
 {
     int arr[] = {8, 1, 6, -7, 25, 95, -75};
     int n = sizeof(arr) / sizeof(arr[0]);
-    bulbullaSort(arr, n);
+    selectionSort(arr, 0, n);
 
     cout << "Sorted Array: ";
     for (int i = 0; i < n; i++)
