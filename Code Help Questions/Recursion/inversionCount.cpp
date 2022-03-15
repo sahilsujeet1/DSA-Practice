@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void merge(int arr[], int s, int e) {
+int merge(int arr[], int s, int e) {
+    int count = 0;
     int mid = s+(e-s)/2;
 
     int len1 = mid-s+1;
@@ -31,6 +32,7 @@ void merge(int arr[], int s, int e) {
             arr[arrayIndex++] = left[index1++];
         } else {
             arr[arrayIndex++] = right[index2++];
+            count += mid-index1;
         }
     }
 
@@ -42,18 +44,24 @@ void merge(int arr[], int s, int e) {
     
     delete [] left;
     delete [] right;
+
+
+    return count;
 }
 
-void mergeSort(int arr[], int s, int e) {
-    if(s >= e)
-        return;
-    int mid = s+(e-s)/2;
-    
-    mergeSort(arr, s, mid);
+int mergeSort(int arr[], int s, int e) {
+    int count = 0;
+    if(e > s) {
+        int mid = s+(e-s)/2;
+        
+        count += mergeSort(arr, s, mid);
 
-    mergeSort(arr, mid+1, e);
+        count += mergeSort(arr, mid+1, e);
 
-    merge(arr, s, e);
+        count += merge(arr, s, e);
+    }
+        
+    return count;
 
 }
 
@@ -61,12 +69,12 @@ int main()
 {
     int arr[] = {8, 1, 6, -7, 25, 95, -75};
     int n = sizeof(arr) / sizeof(arr[0]);
-    mergeSort(arr, 0, n-1);
+    cout << mergeSort(arr, 0, n-1);
 
-    cout << "Sorted Array: ";
-    for (int i = 0; i < n; i++)
-    {
-        cout << arr[i] << " ";
-    }
+    // cout << "Sorted Array: ";
+    // for (int i = 0; i < n; i++)
+    // {
+    //     cout << arr[i] << " ";
+    // }
     cout << endl;
 }
