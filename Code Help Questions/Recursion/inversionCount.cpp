@@ -32,7 +32,7 @@ int merge(int arr[], int s, int e) {
             arr[arrayIndex++] = left[index1++];
         } else {
             arr[arrayIndex++] = right[index2++];
-            count += mid-index1;
+            count += len1-index1;
         }
     }
 
@@ -67,7 +67,7 @@ int mergeSort(int arr[], int s, int e) {
 
 int main()
 {
-    int arr[] = {8, 1, 6, -7, 25, 95, -75};
+    int arr[] = {2,4,1,3,5};
     int n = sizeof(arr) / sizeof(arr[0]);
     cout << mergeSort(arr, 0, n-1);
 
