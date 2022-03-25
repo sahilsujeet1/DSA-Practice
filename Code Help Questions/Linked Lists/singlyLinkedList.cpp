@@ -93,16 +93,17 @@ void deleteTail(Node* &tail) {
 }
 
 void deleteNode(Node* &head, Node* &tail, int pos) {
-    int cnt = 1;
-    Node *prev = head;
-    Node *curr = head;
-
+    
     if(pos == 1) {
         deleteHead(head);
         return;
     } else {
+        int cnt = 1;
+        Node *prev = NULL;
+        Node *curr = head;
         while(cnt < pos-1) {
-            prev = prev->next;
+            prev = curr;
+            curr = prev->next;
             cnt++;
         }
         curr = prev->next;
