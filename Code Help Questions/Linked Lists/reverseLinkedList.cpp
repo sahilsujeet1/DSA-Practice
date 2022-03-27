@@ -30,16 +30,58 @@ Node *reverseLinkedList(Node* head) {
     return prev;
 }
 
+void reverseR(Node* &head, Node *prev, Node *curr) {
+    if(curr == NULL) {
+        head = prev;
+        return;
+    }
+
+    Node *forward = curr->next;
+    reverseR(head, curr, forward);
+    curr->next = prev;
+}
+
+Node* reverseR2(Node *head) {
+    if(head == NULL || head->next == NULL) {
+        return head;
+    }
+
+    Node *prev = NULL;
+    Node *newHead = reverseR2(head->next);
+    prev->next = newHead;
+    return newHead;
+}
+
+Node* reverse(Node *head) {
+
+    /*
+    // Using recursion approach 1
+    Node *curr = head;
+    Node *prev = NULL;
+    reverseR(head, prev, curr);
+    return head;
+    */
+
+   // Using recursion approcah 2
+    return reverseR2(head);
+
+   /*
+    // Using iteration
+   return reverseLinkedList(head);
+   */
+}
+
 void print(Node *head) {
     cout << "Linked List: ";
     while(head != NULL) {
         cout << head->data << "  ";
         head = head->next;
-    }cout << endl;
+    }cout << endl << endl;
 }
 
 int main() {
     Node *node = new Node(2);
+    
     node->next = new Node(4);
     node->next->next = new Node(6);
     node->next->next->next = new Node(8);
