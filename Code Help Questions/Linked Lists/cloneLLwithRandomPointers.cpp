@@ -118,6 +118,62 @@ class Sol2 {
     }
 };
 
+class Sol3 {
+    /*
+        Copy original nodes to clone nodes
+        Connect both linked lists in Zig-Zag manner one after another
+        Loop the connected LL and set clone LL node's random with original LL node' random->next
+        Disconnect both linked list from each other
+
+        Time Complexity: O(n)           Space Complexity: O(1)
+    */
+    public:
+    Node *cloneLL(Node *head) {
+        Node *temp = head;
+        Node *cloneHead = NULL;
+        Node *cloneTail = NULL;
+
+        // Copy nodes
+        while(temp != NULL) {
+            insertTail(cloneHead, cloneTail, temp->data);
+            temp = temp->next;
+        }
+
+        // Connect both LLs in Zig-Zag manner
+        temp = head;
+        Node *cloneTemp = cloneHead;
+        Node *next = NULL;
+        while(temp != NULL) {
+            next = temp->next;
+            temp->next = cloneTemp;
+            temp = next;
+
+            next = cloneTemp->next;
+            cloneTemp->next = temp;
+            cloneTemp = next;
+        }
+
+        // Set clone node random
+        temp = head;
+        while(temp != NULL) {
+            if(temp->next != NULL)
+                if(temp->random != NULL)
+                    temp->next->random = temp->random->next;
+            temp = temp->next->next;
+        }
+
+        // Disconnect both LLs from Zig-Zag
+        temp = head;
+        while(temp != NULL && temp->next != NULL) {
+            next = temp->next;
+            temp->next = next->next;
+            temp = next;
+        }
+
+        return cloneHead;
+    }
+};
+
 int main() {
     Node *node = new Node(1);
     Node *head = node;
@@ -139,6 +195,11 @@ int main() {
     Sol2 s2;
     cloned = s2.cloneLL(head);
     cout << "Cloned LL with Approach 2: " << endl;
+    print(cloned);
+
+    Sol2 s3;
+    cloned = s3.cloneLL(head);
+    cout << "Cloned LL with Approach 3: " << endl;
     print(cloned);
 
 }
