@@ -84,9 +84,37 @@ class Sol1 {
 };
 
 class Sol2 {
+    /*
+        Copies nodes to clone LL
+        Map the original linked list to clone linked list
+        Loop again original LL and set clone node->random to value from map with key original node->random
+
+        Time Complexity: O(n)       Space Complexity: O(n)
+    */
     public:
     Node *cloneLL(Node *head) {
-        
+        Node *temp = head;
+        Node *cloneHead = NULL;
+        Node *cloneTail = NULL;
+
+        unordered_map<Node*, Node*> oldToNew;
+
+        while(temp != NULL) {
+            insertTail(cloneHead, cloneTail, temp->data);
+            oldToNew[temp] = cloneTail;
+            temp = temp->next;
+        }
+
+        temp = head;
+        Node *cloneTemp = cloneHead;
+        while(temp != NULL) {
+            if(temp->random != NULL)
+                cloneTemp->random = oldToNew[temp->random];
+            temp = temp->next;
+            cloneTemp = cloneTemp->next;
+        }
+
+        return cloneHead;
     }
 };
 
@@ -106,6 +134,11 @@ int main() {
     Sol1 s1;
     Node *cloned = s1.cloneLL(head);
     cout << "Cloned LL with Approach 1: " << endl;
+    print(cloned);
+
+    Sol2 s2;
+    cloned = s2.cloneLL(head);
+    cout << "Cloned LL with Approach 2: " << endl;
     print(cloned);
 
 }
