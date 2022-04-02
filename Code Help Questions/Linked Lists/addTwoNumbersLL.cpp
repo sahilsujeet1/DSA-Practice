@@ -26,10 +26,10 @@ void insertTail(Node* &head, Node* &tail, int val) {
     if(head == NULL) {
         head = node;
         tail = node;
+    } else {
+        tail->next = node;
+        tail = tail->next;
     }
-
-    tail->next = node;
-    tail = tail->next;
 }
 
 Node *addTwoLL(Node *num1, Node *num2) {
