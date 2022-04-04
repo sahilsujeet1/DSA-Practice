@@ -56,7 +56,6 @@ Node *mergeSort(Node *head) {
     if(head == NULL || head->next == NULL)
         return head;
 
-
     Node *mid = getMid(head);
     Node *left = head;
     Node *right = mid->next;
