@@ -32,9 +32,41 @@ Node* buildTree(Node *root) {
     return root;
 }
 
+void levelOrderTraversal(Node *root) {
+    if(root) {
+        queue<Node*> q;
+        q.push(root);
+        q.push(NULL);
+
+        while(!q.empty()) {
+            Node *temp = q.front();
+            q.pop();
+
+            if(temp == NULL) {
+                cout << endl; // traversed last level completely
+                if(!q.empty()) {
+                    q.push(NULL); //queue still has some nodes
+                }
+            } else {
+                cout << temp->data << " ";
+
+                if(temp->left)
+                    q.push(temp->left);
+                if(temp->right)
+                    q.push(temp->right);
+            }
+        }
+    } else {
+        cout << "Tree root is unavailable" << endl;
+    }
+}
+
 int main() {
     Node *root = NULL;
 
     // 1 2 3 -1 -1 4 5 -1 -1 -1 6 7 -1 -1 8 -1 -1
-    buildTree(root);
+    root = buildTree(root);
+
+    cout << "\nLevel Order Traversal: " << endl;
+    levelOrderTraversal(root);
 }
