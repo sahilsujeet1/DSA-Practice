@@ -2,7 +2,7 @@
 
 // WHY? - Adaptable (Sorts in every round with time), Stable
 // Space Complexity - O(1)
-// Time Complexity - O(n^2)  Best Case - O(n)  Worst Case - O(n^2 )
+// Time Complexity - O(n^2)  Best Case - O(n)  Worst Case - O(n^2)
 
 #include<iostream>
 using namespace std;

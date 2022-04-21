@@ -16,7 +16,6 @@ bool validRange(char ch) {
         return false;
 }
 
-
 bool checkPalindrome(string str)
 {
    int s=0, e=str.length()-1;
