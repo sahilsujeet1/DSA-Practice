@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 #include<node.cpp>
 
+// Flatten binary tree using Morris traversal technique
+
 class Solution
 {
     public:
