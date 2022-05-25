@@ -36,4 +36,14 @@ int main() {
 
     cout << endl << "Level order: " << endl;
     levelOrderTraversal(root);
+
+    cout << endl << "Inorder: " << endl;
+    inorderTraversal(root);
+
+    cout << endl << "Preorder: " << endl;
+    preorderTraversal(root);
+
+    cout << endl << "Postorder: " << endl;
+    postorderTraversal(root);
+    cout << endl;
 }
