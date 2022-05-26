@@ -28,6 +28,18 @@ void takeInput(Node* &root) {
 
 }
 
+bool searchBST(Node *root, int val) {
+    if(root == NULL)
+        return false;
+    if(root->data == val)
+        return true;
+    else if(root->data > val)
+        return searchBST(root->left, val);
+    else
+        return searchBST(root->right, val);
+    
+}
+
 int main() {
     Node *root = NULL;
 
@@ -46,4 +58,9 @@ int main() {
     cout << endl << "Postorder: " << endl;
     postorderTraversal(root);
     cout << endl;
+
+    int x;
+    cout << "\nEnter a value to search in BST: ";
+    cin >> x;
+    cout << x << " is present in BST: " << (searchBST(root, x) ? "YES" : "NO") << endl;
 }
