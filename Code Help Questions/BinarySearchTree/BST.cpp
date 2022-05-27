@@ -49,6 +49,15 @@ Node *minNode(Node *root) {
     return temp;
 }
 
+Node *maxNode(Node *root) {
+    Node *temp = root;
+    while(temp->right != NULL) {
+        temp = temp->right;
+    }
+
+    return temp;
+}
+
 int main() {
     Node *root = NULL;
 
@@ -74,4 +83,5 @@ int main() {
     // cout << x << " is present in BST: " << (searchBST(root, x) ? "YES" : "NO") << endl;
 
     cout << "Min node in BST: " << minNode(root)->data << endl;
+    cout << "Max node in BST: " << maxNode(root)->data << endl;
 }
