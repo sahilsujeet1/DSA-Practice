@@ -37,7 +37,22 @@ bool searchBST(Node *root, int val) {
         return searchBST(root->left, val);
     else
         return searchBST(root->right, val);
-    
+}
+
+bool iterativeSearchBST(Node *root, int val) {
+    if(root == NULL)
+        return false;
+
+    Node *temp = root;
+    while(temp != NULL) {
+        if(temp->data == val)
+            return true;
+        else if(temp->data > val)
+            temp = temp->left;
+        else
+            temp = temp->right;
+    }
+    return false;
 }
 
 Node *minNode(Node *root) {
@@ -77,9 +92,10 @@ int main() {
     postorderTraversal(root);
     cout << endl;
 
-    // int x;
-    // cout << "\nEnter a value to search in BST: ";
-    // cin >> x;
+    int x;
+    cout << "\nEnter a value to search in BST: ";
+    cin >> x;
+    // cout << x << " is present in BST: " << (iterativeSearchBST(root, x) ? "YES" : "NO") << endl;
     // cout << x << " is present in BST: " << (searchBST(root, x) ? "YES" : "NO") << endl;
 
     cout << "Min node in BST: " << minNode(root)->data << endl;
