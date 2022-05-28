@@ -73,6 +73,46 @@ Node *maxNode(Node *root) {
     return temp;
 }
 
+Node *deleteNode(Node *root, int val) {
+    if(root == NULL)
+        return root;
+
+    if(root->data == val) {
+        // 0 child
+        if(!root->left && !root->right) {
+            delete root;
+            return NULL;
+        }
+
+        // Left only child
+        if(root->left && !root->right) {
+            Node *temp = root->left;
+            delete root;
+            return temp;
+        }
+
+        // Right only child
+        if(!root->left && root->right) {
+            Node *temp = root->right;
+            delete root;
+            return temp;
+        }
+
+        // Two children
+        if(root->left && root->right) {
+            int mini = minNode(root->right)->data;
+            root->data = mini;
+            root->right = deleteNode(root->right, mini);
+            return root;
+        }
+
+    } else if(root->data > val)
+        root->left = deleteNode(root->left, val);
+    else
+        root->right = deleteNode(root->right, val);
+    return root;
+}
+
 int main() {
     Node *root = NULL;
 
@@ -93,11 +133,19 @@ int main() {
     cout << endl;
 
     int x;
-    cout << "\nEnter a value to search in BST: ";
-    cin >> x;
+    // cout << "\nEnter a value to search in BST: ";
+    // cin >> x;
     // cout << x << " is present in BST: " << (iterativeSearchBST(root, x) ? "YES" : "NO") << endl;
     // cout << x << " is present in BST: " << (searchBST(root, x) ? "YES" : "NO") << endl;
 
     cout << "Min node in BST: " << minNode(root)->data << endl;
     cout << "Max node in BST: " << maxNode(root)->data << endl;
+
+    cout << "\nEnter a node to delete: ";
+    cin >> x;
+    root = deleteNode(root, x);
+    cout << "Level order after deletion: " << endl;
+    levelOrderTraversal(root);
+
+    return 0;
 }
