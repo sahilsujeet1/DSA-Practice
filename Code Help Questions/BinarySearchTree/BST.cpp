@@ -39,7 +39,7 @@ bool searchBST(Node *root, int val) {
         return searchBST(root->right, val);
 }
 
-bool iterativeSearchBST(Node *root, int val) {
+bool iterativeSearchBST(Node *root, int val) {  // Uses constant space hence more efficient than recursivve approach
     if(root == NULL)
         return false;
 
