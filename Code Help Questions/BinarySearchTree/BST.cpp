@@ -83,7 +83,7 @@ Node *deleteNode(Node *root, int val) {
             delete root;
             return NULL;
         }
-
+        // Single Child
         // Left only child
         if(root->left && !root->right) {
             Node *temp = root->left;
