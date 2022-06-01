@@ -107,9 +107,9 @@ Node *deleteNode(Node *root, int val) {
         }
 
     } else if(root->data > val)
-        root->left = deleteNode(root->left, val);
+        root->left = deleteNode(root->left, val); // Add left subtree to root after deletion in left part
     else
-        root->right = deleteNode(root->right, val);
+        root->right = deleteNode(root->right, val); // Add right subtree to root after deletion in right part
     return root;
 }
 
