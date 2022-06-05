@@ -64,56 +64,15 @@ class Approach2 {
         
         root->right = head;
         if(head != NULL)
-            head->right = root;
+            head->left = root;
         head = root;
         
         BSTtoDLL(root->left, head);
     }
-    
-//      Node *mergeLogic(Node  *first, Node  *second) {
-
-//         if(first->right == NULL) {
-//             first->right = second;
-//             return first;
-//         }
-
-//         Node *curr1 = first;
-//         Node *next1 = curr1->right;
-//         Node *curr2 = second;
-//         Node *next2 = curr2->right;
-
-//         while(next1 != NULL && curr2 != NULL) {
-//             if((curr2->data >= curr1->data) && (curr2->data <= next1->data)) {
-//                 curr1->right = curr2;
-//                 next2 = curr2->right;
-//                 curr2->right = next1;
-
-//                 curr1 = curr2;
-//                 curr2 = next2;
-
-//             } else {
-//                 curr1 = curr1->right;
-//                 next1 = next1->right;
-
-//                 if(next1 == NULL) {
-//                     curr1->right = curr2;
-//                     return first;
-//                 }
-//             }
-//         }
-
-//         return first;
-//     }
-    
+     
     Node *mergeTwoSortedDLL(Node *head1, Node *head2) {
         Node *head = NULL;
         Node *tail = NULL;
-        
-//         if(head1->data < head2->data) {
-//             return mergeLogic(head1, head2);
-//         } else {
-//             return mergeLogic(head2, head1);
-//         }
         
         while(head1 != NULL && head2 != NULL) {
             if(head1->data < head2->data) {
@@ -164,22 +123,21 @@ class Approach2 {
         return cnt;
     }
     
-    Node *DLLtoBST(Node* &root, int n) {
-        if(n <= 0 || root == NULL)
+    Node *DLLtoBST(Node* &head, int n) {
+        if(n <= 0 || head == NULL)
             return NULL;
         
-        Node *left = DLLtoBST(root->left, n/2);
-        Node *head = root;
-        head->left = left;
+        Node *left = DLLtoBST(head, n/2);
+        Node *root = head;
+        root->left = left;
         
-        root = root->right;
+        head = head->right;
         
-        Node *right = DLLtoBST(root->right, n/2-1);
-        head->right = right;
+        root->right = DLLtoBST(head, n-n/2-1);
         
-        return head;
+        return root;
     }
-        
+            
     Node *findAns(Node *root1, Node *root2) {
         Node *ll1 = NULL;
         BSTtoDLL(root1, ll1);
@@ -188,14 +146,13 @@ class Approach2 {
         BSTtoDLL(root2, ll2);
         
         Node *mergedDLL = mergeTwoSortedDLL(ll1, ll2);
-        mergedDLL->left = NULL;
+//         mergedDLL->left = NULL;
         int n = countNodes(mergedDLL);
         
         return DLLtoBST(mergedDLL, n);
-        return NULL;
+//         return NULL;
     }
 };
-
 
 Node *mergeBST(Node *root1, Node *root2){
     // Write your code here.
