@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 #include "node.cpp"
 
+// Time Complexity: O(m+n) Space Complexity: O(m+n)
 class Approach1 {
   public:
     void inorder(Node *root, vector<int> &in) {
@@ -53,7 +54,7 @@ class Approach1 {
     }
 };
 
-
+// Time Complexity: O(m+n) Space Complexity: O(h1+h2)
 class Approach2 {
   public:
     void BSTtoDLL(Node *root, Node* &head) {
