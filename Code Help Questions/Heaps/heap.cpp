@@ -68,15 +68,26 @@ void heapify(int arr[], int n, int i) { // Time Complexity = O(n)     max heap
     int left = 2*i;
     int right = 2*i + 1;
 
-    if(left < n && arr[largest] < arr[left])
+    if(left <= n && arr[largest] < arr[left])
         largest = left;
     
-    if(right < n && arr[largest] < arr[right])
+    if(right <= n && arr[largest] < arr[right])
         largest = right;
 
     if(largest != i) {
         swap(arr[largest], arr[i]);
         heapify(arr, n, largest);
+    }
+}
+
+void heapSort(int arr[], int n) {
+    int size = n;
+
+    while(size > 1) {
+        swap(arr[size], arr[1]);
+        size--;
+
+        heapify(arr, size, 1);
     }
 }
 
@@ -96,11 +107,18 @@ int main() {
     // Heapify algorithm example
     int arr[6] = {-1, 32,53,12,64,25};
     int n = 5;
+    cout << "Heapify function: " << endl;
     for(int i=n/2; i>0; i--) {
         heapify(arr, n, i);
     }
 
     for(int i=1; i<=n ;i++) {
+        cout << arr[i] << " ";
+    } cout << endl;
+
+    cout << "\nHeap Sorting: ";
+    heapSort(arr, n);
+    for(int i=1; i<=n; i++) {
         cout << arr[i] << " ";
     } cout << endl;
 }
