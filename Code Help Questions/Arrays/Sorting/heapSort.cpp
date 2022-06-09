@@ -41,4 +41,27 @@ int main() {
     for(int i=1; i<=n; i++) {
         cout << arr[i] << " ";
     } cout << endl;
+
+    cout << "\n*********PRIORITY QUEUE***************\n";
+    priority_queue<int> maxHeap;
+    maxHeap.push(3);
+    maxHeap.push(2);
+    maxHeap.push(5);
+    maxHeap.push(1);
+
+    cout << "Max heap top: " << maxHeap.top() << endl;
+    maxHeap.pop();
+    cout << "Max heap top: " << maxHeap.top() << endl;
+
+
+    priority_queue<int, vector<int>, greater<int>> minHeap;
+    minHeap.push(3);
+    minHeap.push(2);
+    minHeap.push(5);
+    minHeap.push(1);
+
+    cout << "Min heap top: " << minHeap.top() << endl;
+    minHeap.pop();
+    cout << "Min heap top: " << minHeap.top() << endl;
+
 }
