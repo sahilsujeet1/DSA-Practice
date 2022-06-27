@@ -48,5 +48,6 @@ vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int sour
         }
     }
     
+    // Return the shortest distance from source to every node using Dijkstra's Algorithm
     return dist;
 }
