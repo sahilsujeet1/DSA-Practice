@@ -42,7 +42,7 @@ vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int sour
                 
                 // Update the distance of neighbouring node
                 dist[i.first] = topDist + i.second;
-                
+                // Insert the new neighbour pair of new distance and node value
                 st.insert(make_pair(dist[i.first], i.first));
             }
         }
