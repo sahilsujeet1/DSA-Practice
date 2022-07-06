@@ -129,8 +129,8 @@ int main()
 					{ -4, -1, 1, 7, -6 },
 					{ 0, -4, 10, -5, 1 }
 					};
-	cout << "Maximum Value is "
-		<< findMaxValue(mat);
+	cout << "Maximum Value is: "
+		<< findMaxValue(mat) << endl;
 
 	return 0;
 }
