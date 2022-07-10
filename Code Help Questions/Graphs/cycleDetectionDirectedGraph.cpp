@@ -19,6 +19,7 @@ bool dfs(int node, unordered_map<int, list<int>> &adj,
     return false;
 }
 
+// Cycle detection function using BFS Kahn's Algorithm
 bool cycleBFSKahnsAlgo(unordered_map<int, list<int>> adj, int v) {
         queue<int> q;
         vector<int> indegree(v);
