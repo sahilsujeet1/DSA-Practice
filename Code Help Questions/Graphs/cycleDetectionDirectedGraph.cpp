@@ -19,6 +19,37 @@ bool dfs(int node, unordered_map<int, list<int>> &adj,
     return false;
 }
 
+bool cycleBFSKahnsAlgo(unordered_map<int, list<int>> adj, int v) {
+        queue<int> q;
+        vector<int> indegree(v);
+        vector<int> ans;
+        
+        for(int i=0; i<v; i++) {
+            for(auto j:adj[i]) {
+                indegree[j]++;
+            }
+        }
+        
+        for(int i=0; i<v; i++) {
+            if(indegree[i] == 0)
+                q.push(i);
+        }
+        
+        while(!q.empty()) {
+            int front = q.front();
+            q.pop();
+            ans.push_back(front);
+            
+            for(auto i:adj[front]) {
+                indegree[i]--;
+                if(indegree[i] == 0) {
+                    q.push(i);
+                }
+            }
+        }
+        return ans.size() != adj.size();
+    }
+
 int detectCycleInDirectedGraph(int n, vector < pair < int, int >> & edges) {
   // Write your code here.
     unordered_map<int, list<int>> adj;
