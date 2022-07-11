@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// Cycle detection function using DFS
 bool dfs(int node, unordered_map<int, list<int>> &adj, 
          unordered_map<int, bool> &visited, unordered_map<int, bool> &dfsVisited) {
     visited[node] = true;
