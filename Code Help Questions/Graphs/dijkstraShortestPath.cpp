@@ -30,6 +30,7 @@ vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int sour
         // Remove top record from the set
         st.erase(top);
         
+        // Traverse all the neighbours of the top node
         for(auto i:adj[topNode]) {
             if(topDist + i.second < dist[i.first]) {
                 auto record = st.find(make_pair(dist[i.first], i.first));
