@@ -27,6 +27,7 @@ vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int sour
         int topNode = top.second;
         int topDist = top.first;
         
+        // Remove top record from the set
         st.erase(top);
         
         for(auto i:adj[topNode]) {
