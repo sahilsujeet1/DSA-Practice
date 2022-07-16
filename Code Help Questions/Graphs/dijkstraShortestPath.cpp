@@ -22,6 +22,7 @@ vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int sour
     
     // Run loop until set is empty
     while(!st.empty()) {
+        // Fetch top record from set
         auto top = *(st.begin());
         int topNode = top.second;
         int topDist = top.first;
