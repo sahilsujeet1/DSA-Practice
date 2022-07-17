@@ -20,6 +20,7 @@ vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int sour
     dist[source] = 0;
     st.insert(make_pair(0, source));
     
+    // Run loop until set is empty
     while(!st.empty()) {
         auto top = *(st.begin());
         int topNode = top.second;
