@@ -13,6 +13,7 @@ vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int sour
         adj[v].push_back(make_pair(u, w));
     }
     
+    // Creating distance vector and set
     vector<int> dist(vertices, INT_MAX);
     set<pair<int, int> > st;
     dist[source] = 0;
