@@ -2,7 +2,7 @@
 using namespace std;
 
 vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int source) {
-    // Write your code here.
+    // Creating adjacency list
     unordered_map<int, list<pair<int, int> > > adj;
     for(int i=0; i<edges; i++) {
         int u = vec[i][0];
