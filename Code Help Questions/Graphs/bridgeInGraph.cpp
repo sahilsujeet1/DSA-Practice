@@ -2,7 +2,7 @@
 using namespace std;
 
 void dfs(int node, int parent, int &timer, unordered_map<int, list<int>> &adj,
-        unordered_map<int, bool> &vis, vector<int> &disc, vector<int> &low,     vector<vector<int>> &result) {
+        unordered_map<int, bool> &vis, vector<int> &disc, vector<int> &low, vector<vector<int>> &result) {
     
     vis[node] = true;
     disc[node] = low[node] = timer++;
