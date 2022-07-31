@@ -54,7 +54,6 @@ int solveTab(vector<int> &num, int x) {
 
 int minimumElements(vector<int> &num, int x)
 {
-    // Write your code here.
 //     int ans = solveRec(num, x);
     vector<int> dp(x+1, -1);
 //     int ans = solveMem(num, x, dp);
