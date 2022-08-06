@@ -10,3 +10,17 @@ int solveRec(vector<int> &nums, int n) {
     
     return max(inc, exc);
 }
+
+int solveMem(vector<int> &nums, int n, vector<int> &dp) {
+    if(n < 0) return 0;
+    if(n == 0) return nums[n];
+    
+    if(dp[n] != -1)
+        return dp[n];
+    
+    int inc = nums[n] + solveMem(nums, n-2, dp);
+    int exc = solveMem(nums, n-1, dp);
+    
+    dp[n] = max(inc, exc);
+    return dp[n];
+}
