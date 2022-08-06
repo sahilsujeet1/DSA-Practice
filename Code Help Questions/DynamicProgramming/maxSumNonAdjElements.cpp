@@ -24,3 +24,18 @@ int solveMem(vector<int> &nums, int n, vector<int> &dp) {
     dp[n] = max(inc, exc);
     return dp[n];
 }
+
+int solveTab(vector<int> &nums) {
+    int n = nums.size();
+    vector<int> dp(n);
+    
+    dp[0] = nums[0];
+    
+    for(int i=1; i<n; i++) {
+        int inc = nums[i] + dp[i-2];
+        int exc = dp[i-1];
+        dp[i] = max(inc, exc);
+    }
+    
+    return dp[n-1];
+}
